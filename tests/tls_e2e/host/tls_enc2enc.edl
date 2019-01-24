@@ -1,0 +1,13 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+enclave {
+    from "../../../include/openenclave/socket.edl" import *;
+    trusted {
+        public int setup_tls_server([in, string] char* port);
+        public int launch_tls_client([in, string] char* server_name, [in, string] char* server_port);
+    };
+    untrusted {
+        int server_is_ready();
+    };
+};
